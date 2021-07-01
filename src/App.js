@@ -1,14 +1,19 @@
 import React from 'react';
+import styled, {ThemeProvider} from 'styled-components/native';
+import {theme} from './theme';
 
-import {
-  View, Text
-} from 'react-native';
+const Container = styled.View`
+  flex: 1;
+  background-color: ${({theme}) => theme.background};
+  align-items: center;
+  justify-content: center;
+`;
 
 const App = () => {
   return(
-    <View>
-      <Text>Hello!</Text>
-    </View>
+    <ThemeProvider theme={theme}>
+      <Container></Container>
+    </ThemeProvider>
   );
 };
 
