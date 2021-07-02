@@ -1,8 +1,11 @@
 import React, {useState} from 'react';
 import styled, {ThemeProvider} from 'styled-components/native';
 import {theme} from './theme';
-import { StatusBar } from 'react-native';
+import { Dimensions, StatusBar } from 'react-native';
 import Input from './components/Input';
+import { images } from './images';
+import Task from './components/Task';
+
 
 const Container = styled.SafeAreaView`
   flex: 1;
@@ -19,8 +22,14 @@ const Title = styled.Text`
   margin: 20px;
 `;
 
+const List = styled.ScrollView`
+  flex: 1;
+  width: ${({width}) => width - 40}px;
+`;
+
 const App = () => {
 
+  const width = Dimensions.get('window').width;
   const [newTask, setNewTask] = useState('');
 
   const _addTask = () => {
@@ -46,6 +55,13 @@ const App = () => {
           onChangeText={_handleTextChange}
           onSubmitEditing={_addTask}
           />
+        <List width={width}>
+          <Task text="Hanbit"/>
+          <Task text="React Native"/>
+          <Task text="React Native Sample"/>
+          <Task text="Edit TODO Item"/>
+        </List>
+
       </Container>
     </ThemeProvider>
   );
