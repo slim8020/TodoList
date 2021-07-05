@@ -75,6 +75,8 @@ const App = () => {
   };
 
   // expo app loading 을 사용하지 않는 방법으로 진행 
+  // class 를 선택해서 life cycle 중에 앱 로딩 시를 찾을 것
+  
   const _loadTasks = async() =>{
     const loadedTasks = await AsyncStorage.getItem('tasks');
     setTasks(JSON.parse(loadedTasks || '{}'));
